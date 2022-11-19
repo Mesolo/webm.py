@@ -902,7 +902,7 @@ def _get_output_filename(options):
             options.to is not None):
         name += '_'
         shift = 0 if options.ss is None else _parse_time(options.ss)
-        name += _timestamp(shift)
+        name += _timestamp(shift).replace(":", ".")
         name += '-'
         if options.t:
             endpos = shift + _parse_time(options.t)
@@ -910,7 +910,7 @@ def _get_output_filename(options):
             endpos = _parse_time(options.to)
         else:
             endpos = options.induration
-        name += _timestamp(endpos)
+        name += _timestamp(endpos).replace(":", ".")
     name += '.webm'
     return name
 
